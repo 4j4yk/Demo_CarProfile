@@ -1,0 +1,41 @@
+<?php
+/** @var \Demo\CarProfile\Block\CarForm $block */
+
+$carList = $block->getCarsList();
+$carInfo = $block->getSavedCar();
+?>
+
+<div class="block block-dashboard-info">
+    <div class="block-title">
+        <?php if($carInfo): ?>
+        <strong>Your car - <?= $carInfo['make'] .', ' . $carInfo['model'] .', ' . $carInfo['year'] ?> </strong>
+    </div>
+    <div class='block-content'>
+        <img alt="<?= $carInfo['model']?>" src="<?= $carInfo['image']?>">
+        <?php endif;?>
+        <form class='form form-car-manage' action="<?= $block->escapeUrl($block->getAction()) ?>" method='post' id='form-validate'>
+            <fieldset class='fieldset'>
+                <?= $block->getBlockHtml('formkey') ?>
+                <legend class="legend"><span><?= $block->escapeHtml(__('Car Selection')) ?></span></legend><br>
+                <div class='field car required'>
+                    <label class='label' for='customer_car'>
+                        <span>Models</span>
+                    </label>
+                    <div class='control'>
+                        <select id='customer_car' name='customer_car' title='Cars' aria-required='true'>
+                            <option value='0'>Select a car</option>
+                            <option value='0'>-- None --</option>
+                            <?php foreach ($carList as $car): ?>
+                                <option value="<?= $car['id']?>"><?= $car['model']?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary"><button type="submit" title="<?= $block->escapeHtmlAttr(__('Save')) ?>" class="action save primary"><span><?= $block->escapeHtml(__('Save')) ?></span></button></div>
+                <div class="secondary"><a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?= $block->escapeHtml(__('Back')) ?></span></a></div>
+            </div>
+        </form>
+    </div>
+</div>
