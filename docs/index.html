@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo_CarProfile — Magento 2 Module</title>
+  <meta name="description" content="Demo_CarProfile: Magento 2 module that interacts with a Swagger API using Laminas." />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div class="badge">Magento 2 Module</div>
+      <h1>Demo_CarProfile</h1>
+      <p class="subtitle">
+        A Magento 2 / Adobe Commerce module that interacts with a Swagger API using the Laminas framework.
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="https://github.com/4j4yk/Demo_CarProfile" target="_blank" rel="noreferrer">View on GitHub</a>
+        <a class="btn secondary" href="#install">Install</a>
+        <a class="btn secondary" href="#usage">Usage</a>
+      </div>
+
+      <p class="small-note">
+        This site is static documentation hosted on GitHub Pages. The module runs inside a Magento 2 / Adobe Commerce instance.
+      </p>
+    </header>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        Demo_CarProfile demonstrates how to consume a Swagger-described API from within a Magento module using Laminas-based
+        HTTP client patterns. It is intended as a learning and demonstration project, and can be extended for production use.
+      </p>
+      <p class="small-note">
+        Repo README currently describes it as: “module to interact with swagger API using Laminas framework.”
+      </p>
+    </section>
+
+    <section>
+      <h2>Key capabilities</h2>
+      <ul>
+        <li>Magento 2 module scaffolding (registration, composer package)</li>
+        <li>Laminas-based API interaction layer</li>
+        <li>Example controllers / frontend view integration</li>
+        <li>Demo UI and flow (see demo GIF)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Demo</h2>
+      <p class="small-note">
+        The repository includes <code>demo.gif</code>. To display it here, copy it into <code>docs/assets/demo.gif</code>.
+      </p>
+      <div class="media">
+        <img src="./assets/demo.gif" alt="Demo animation" onerror="this.style.display='none'; document.getElementById('missingDemo').style.display='block';" />
+        <div id="missingDemo" class="callout" style="display:none">
+          Demo GIF not found. Add it at <code>docs/assets/demo.gif</code> to render on this page.
+        </div>
+      </div>
+    </section>
+
+    <section id="install">
+      <h2>Install</h2>
+      <p>Install via Composer by adding the Git repository and requiring the package.</p>
+
+      <h3>1) Add repository to composer.json</h3>
+      <pre class="code">"repositories": [
+  {
+    "type": "git",
+    "url": "https://github.com/4j4yk/Demo_CarProfile.git"
+  }
+]</pre>
+
+      <h3>2) Require the module</h3>
+      <pre class="code">composer require demo/module-car-profile dev-main</pre>
+
+      <h3>3) Enable and upgrade (typical Magento steps)</h3>
+      <pre class="code">bin/magento module:enable Demo_CarProfile
+bin/magento setup:upgrade
+bin/magento cache:flush</pre>
+
+      <div class="callout">
+        <strong>Note:</strong> If the module’s declared name differs, use the exact module name from <code>registration.php</code>.
+      </div>
+    </section>
+
+    <section id="usage">
+      <h2>Usage</h2>
+      <p>
+        The module includes sample controller(s) and frontend view(s). After installation, verify the module is enabled and
+        check the defined routes under <code>etc/frontend/routes.xml</code> (or similar) to find the entry URL.
+      </p>
+
+      <h3>Suggested verification checklist</h3>
+      <ol>
+        <li>Confirm module is enabled: <code>bin/magento module:status</code></li>
+        <li>Inspect routes: <code>etc/frontend/routes.xml</code></li>
+        <li>Check controller entrypoint(s): <code>Controller/Index</code></li>
+        <li>Confirm layout + templates: <code>view/frontend</code></li>
+        <li>Review API client implementation: <code>Api/</code></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Repository structure</h2>
+      <div class="grid">
+        <div class="card"><h3><code>Api/</code></h3><p>API client layer for Swagger-backed services.</p></div>
+        <div class="card"><h3><code>Controller/</code></h3><p>Controller entrypoints for demo routes.</p></div>
+        <div class="card"><h3><code>view/frontend</code></h3><p>Templates, layouts, and assets.</p></div>
+        <div class="card"><h3><code>etc/</code></h3><p>Module configuration (routes, di, etc.).</p></div>
+        <div class="card"><h3><code>Setup/</code></h3><p>Data patches or setup scripts (if present).</p></div>
+        <div class="card"><h3><code>Block/</code></h3><p>View models / blocks for templates.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Limitations and next steps</h2>
+      <ul>
+        <li>Add environment-based configuration for API base URL and credentials.</li>
+        <li>Add error handling, retries, and timeouts around API calls.</li>
+        <li>Add integration tests (MFTF / PHPUnit) for controllers and API client.</li>
+        <li>Harden for production: caching, logging, and security review.</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <small>Documentation for https://github.com/4j4yk/Demo_CarProfile</small>
+    </footer>
+  </main>
+</body>
+</html>
